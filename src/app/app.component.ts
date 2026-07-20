@@ -4,15 +4,11 @@ import { Component } from '@angular/core';
   selector: 'sw-root',
   template: `
     <div class="container mt-5">
-      <div class="alert alert-success">Bootstrap 4 Installed Successfully!</div>
-
+      <header>
       <h1>{{ title }}</h1>
+      </header>
 
-      <p>Welcome to Angular!</p>
-
-      <button class="btn btn-primary">
-        <i class="fa fa-home"></i>Click Me
-      </button>
+      <sw-home></sw-home>
     </div>
   `,
 })
