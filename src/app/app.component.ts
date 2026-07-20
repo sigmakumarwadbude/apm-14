@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'sw-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+  <h1>{{ title }}</h1>
+
+<p>Welcome to Angular!</p>
+  `,
 })
 export class AppComponent {
-  title = 'apm-14';
+  title = 'Angular Learning';
 }
