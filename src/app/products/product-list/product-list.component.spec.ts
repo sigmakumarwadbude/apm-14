@@ -20,4 +20,12 @@ describe('ProductListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('toggleImage should toggle showImage', () => {
+    component.showImage = false;
+
+    component.toggleImage();
+
+    expect(component.showImage).toBeTrue();
+  });
 });
