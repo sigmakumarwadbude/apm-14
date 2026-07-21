@@ -8,9 +8,8 @@ describe('ProductListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductListComponent ]
-    })
-    .compileComponents();
+      declarations: [ProductListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ProductListComponent);
     component = fixture.componentInstance;
@@ -21,11 +20,49 @@ describe('ProductListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('toggleImage should toggle showImage', () => {
-    component.showImage = false;
+  it('should toggle showImage', () => {
+    expect(component.showImage).toBeFalse();
 
     component.toggleImage();
-
     expect(component.showImage).toBeTrue();
+
+    component.toggleImage();
+    expect(component.showImage).toBeFalse();
+  });
+
+  it('should filter regardless of case', () => {
+    const result = component.performFilter('LEAF');
+
+    expect(result.length).toBe(1);
+  });
+
+  it('should trim spaces before filtering', () => {
+    const result = component.performFilter('  Leaf  ');
+
+    expect(result.length).toBe(1);
+  });
+
+  it('should initialize filteredProducts with all products', () => {
+    expect(component.filteredProducts.length).toBe(component.products.length);
+  });
+
+  it('should filter products when listFilter is set', () => {
+    component.listFilter = 'Leaf';
+
+    expect(component.filteredProducts.length).toBe(1);
+    expect(component.filteredProducts[0].productName).toBe('Leaf Rake');
+  });
+
+  it('should return matching products from performFilter()', () => {
+    const result = component.performFilter('leaf');
+
+    expect(result.length).toBe(1);
+    expect(result[0].productName).toBe('Leaf Rake');
+  });
+
+  it('should return no products when there is no match', () => {
+    const result = component.performFilter('xyz');
+
+    expect(result.length).toBe(0);
   });
 });
