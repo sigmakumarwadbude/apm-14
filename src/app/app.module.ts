@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import { ConvertToSpaces } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star/star.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { ROOT_ROUTES } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     FormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(ROOT_ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]

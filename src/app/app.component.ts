@@ -3,13 +3,21 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'sw-root',
   template: `
-    <div class="container mt-5">
-      <header>
-      <h1>{{ title }}</h1>
-      </header>
+    <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+      <a class="navbar-brand">{{ title }}</a>
 
-      <!-- <sw-home></sw-home> -->
-       <sw-product-list></sw-product-list>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="products">Product List</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <router-outlet></router-outlet>
     </div>
   `,
 })
