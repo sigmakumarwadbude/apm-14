@@ -3,16 +3,13 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ConvertToSpaces } from './shared/convert-to-spaces.pipe';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent,
-        ProductListComponent,
-        ConvertToSpaces
-      ],
-      imports: [HttpClientTestingModule]
+      declarations: [AppComponent, ProductListComponent, ConvertToSpaces],
+      imports: [HttpClientTestingModule, RouterTestingModule],
     }).compileComponents();
   });
 
@@ -32,6 +29,8 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('header h1')?.textContent).toContain('Angular Learning');
+    expect(compiled.querySelector('.navbar-brand')?.textContent).toContain(
+      'Angular Learning',
+    );
   });
 });
