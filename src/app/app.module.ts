@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ConvertToSpaces } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star/star.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { StarComponent } from './shared/star/star.component';
   imports: [
     BrowserModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

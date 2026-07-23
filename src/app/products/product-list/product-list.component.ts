@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from '../product.model';
 import { ProductsService } from '../products.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'sw-product-list',
@@ -11,13 +12,15 @@ import { ProductsService } from '../products.service';
     }
     `]
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   pageTitle = 'Product List';
 
   imageWidth = 50;
   imageMargin = 2;
   showImage = false;
   private _listFilter = '';
+  sub!: Subscription;
+  errMsg = '';
 
   get listFilter() {
     return this._listFilter;
@@ -41,8 +44,15 @@ export class ProductListComponent implements OnInit {
   constructor(private prodcutSrv: ProductsService) {}
 
   ngOnInit(): void {
-    this.products = this.prodcutSrv.getProducts();
-    this.filteredProducts = this.products;
+    this.sub = this.prodcutSrv.getProducts().subscribe({
+      next: products => {
+        this.products = products,
+        this.filteredProducts = products
+      },
+      error: (err) => {
+        this.errMsg = err;
+      },
+    });
   }
 
   toggleImage() {
@@ -51,5 +61,11 @@ export class ProductListComponent implements OnInit {
 
   onRatingClicked(message: string) {
     this.pageTitle = 'Product List ' + message;
+  }
+
+  ngOnDestroy(): void {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 }
