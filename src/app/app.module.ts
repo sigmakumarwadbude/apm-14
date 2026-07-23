@@ -6,12 +6,14 @@ import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ConvertToSpaces } from './shared/convert-to-spaces.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProductListComponent
+    ProductListComponent,
+    ConvertToSpaces
   ],
   imports: [
     BrowserModule,

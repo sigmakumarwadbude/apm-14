@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductListComponent } from './product-list.component';
+import { FormsModule } from '@angular/forms';
+import { ConvertToSpaces } from 'src/app/shared/convert-to-spaces.pipe';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -8,7 +10,8 @@ describe('ProductListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductListComponent],
+      declarations: [ProductListComponent, ConvertToSpaces],
+      imports: [FormsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductListComponent);

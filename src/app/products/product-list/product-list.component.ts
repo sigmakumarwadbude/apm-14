@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../product.model';
 
 @Component({
   selector: 'sw-product-list',
   templateUrl: './product-list.component.html',
+  styles: [`
+    thead {
+      color: #337AB7
+    }
+    `]
 })
 export class ProductListComponent implements OnInit {
   pageTitle = 'Product List';
@@ -21,7 +27,7 @@ export class ProductListComponent implements OnInit {
     this.filteredProducts = this.performFilter(value);
   }
 
-  products = [
+  products: Product[] = [
     {
       productId: 1,
       productName: 'Leaf Rake',
@@ -34,10 +40,10 @@ export class ProductListComponent implements OnInit {
     },
   ];
 
-  filteredProducts: any[] = [];
+  filteredProducts: Product[] = [];
 
   performFilter(filterBy: string): any[] {
-    filterBy = filterBy.toLocaleLowerCase();
+    filterBy = filterBy.toLocaleLowerCase().trim();
     return this.products.filter((product) =>
       product.productName.toLocaleLowerCase().includes(filterBy));
   }
