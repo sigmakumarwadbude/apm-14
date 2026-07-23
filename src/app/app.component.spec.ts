@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ConvertToSpaces } from './shared/convert-to-spaces.pipe';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -11,6 +12,7 @@ describe('AppComponent', () => {
         ProductListComponent,
         ConvertToSpaces
       ],
+      imports: [HttpClientTestingModule]
     }).compileComponents();
   });
 
