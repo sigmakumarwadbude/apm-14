@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
       <h1>{{ title }}</h1>
       </header>
 
-      <sw-home></sw-home>
+      <!-- <sw-home></sw-home> -->
+       <sw-product-list></sw-product-list>
     </div>
   `,
 })
