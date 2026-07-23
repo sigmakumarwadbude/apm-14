@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductListComponent } from './product-list.component';
 import { FormsModule } from '@angular/forms';
 import { ConvertToSpaces } from 'src/app/shared/convert-to-spaces.pipe';
+import { StarComponent } from 'src/app/shared/star/star.component';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -10,7 +11,7 @@ describe('ProductListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductListComponent, ConvertToSpaces],
+      declarations: [ProductListComponent, ConvertToSpaces, StarComponent],
       imports: [FormsModule],
     }).compileComponents();
 
@@ -68,4 +69,12 @@ describe('ProductListComponent', () => {
 
     expect(result.length).toBe(0);
   });
+
+  it('it should ', () => {
+    component.pageTitle = 'Product List';
+
+    component.onRatingClicked('4.2');
+
+    expect(component.pageTitle).toBe('Product List 4.2');
+  })
 });
