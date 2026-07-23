@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.model';
+import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'sw-product-list',
@@ -27,18 +28,7 @@ export class ProductListComponent implements OnInit {
     this.filteredProducts = this.performFilter(value);
   }
 
-  products: Product[] = [
-    {
-      productId: 1,
-      productName: 'Leaf Rake',
-      productCode: 'GDN-0011',
-      releaseDate: 'March 19, 2021',
-      description: 'Leaf rake with 48-inch wooden handle.',
-      price: 19.95,
-      starRating: 3.2,
-      imageUrl: 'assets/images/leaf_rake.png',
-    },
-  ];
+  products: Product[] = [];
 
   filteredProducts: Product[] = [];
 
@@ -48,9 +38,10 @@ export class ProductListComponent implements OnInit {
       product.productName.toLocaleLowerCase().includes(filterBy));
   }
 
-  constructor() {}
+  constructor(private prodcutSrv: ProductsService) {}
 
   ngOnInit(): void {
+    this.products = this.prodcutSrv.getProducts();
     this.filteredProducts = this.products;
   }
 

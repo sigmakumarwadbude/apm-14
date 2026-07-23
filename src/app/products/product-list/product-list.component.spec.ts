@@ -70,7 +70,7 @@ describe('ProductListComponent', () => {
     expect(result.length).toBe(0);
   });
 
-  it('it should ', () => {
+  it('it should update pageTitle', () => {
     component.pageTitle = 'Product List';
 
     component.onRatingClicked('4.2');
